@@ -7,13 +7,13 @@ import java.rmi.*;
 //account: the user account
 //username: only for "login" operation
 //password: only for "login" operation
-//amount: only for “deposit” and “withdraw” operations
+//amount: only for user deposit and user withdraw operations
 
 public class ATM {
 
 public static void main (String args[]) throws Exception {
 
-// get user’s input, and perform the operations
+// get user input, and perform the operations
 	BankInterface bank = (BankInterface) Naming.lookup("//localhost/Bank");
 	
 	try {

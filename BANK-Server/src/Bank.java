@@ -12,7 +12,7 @@ private List<Account> accounts; // users accounts
 
 public Bank() throws RemoteException
 {
-
+	super();
 }
 
 @Override
