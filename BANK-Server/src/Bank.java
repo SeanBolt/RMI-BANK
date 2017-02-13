@@ -45,8 +45,8 @@ public Statement getStatement(Date from, Date to, long sessionID) throws RemoteE
 public static void main(String args[]) {
 	try {
 		//Reset Security Manager
-		//System.setSecurityManager(new SecurityManager());
-		//System.out.println("Set Security Manager");
+//		System.setSecurityManager(new SecurityManager());
+//		System.out.println("Set Security Manager");
 		
 		//Create instance of local object
 		Bank bank = new Bank();
