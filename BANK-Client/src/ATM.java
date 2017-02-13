@@ -1,4 +1,4 @@
-import java.rmi.Naming;
+import java.rmi.*;
 
 //The command line parameters of the ATM client application include:
 //server_address: the address of the rmiregistry
@@ -14,7 +14,7 @@ public class ATM {
 public static void main (String args[]) throws Exception {
 
 // get user’s input, and perform the operations
-	Bank bank = (Bank) Naming.lookup("//localhost/Bank");
+	BankInterface bank = (BankInterface) Naming.lookup("//localhost/Bank");
 	
 	try {
 		int funds = bank.inquiry(0, 0);
