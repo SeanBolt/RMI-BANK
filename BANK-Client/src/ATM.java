@@ -14,12 +14,16 @@ public class ATM {
 public static void main (String args[]) throws Exception {
 
 // get user’s input, and perform the operations
-	BankInterface bank = (BankInterface) Naming.lookup("//localhost/Bank");
-	
+	BankInterface bank = (BankInterface) Naming.lookup("//localhost/bank");
 	try {
-		int funds = bank.inquiry(0, 0);
-		System.out.println("Bank Enquirey has returned a value of " + funds);
-	} catch(Exception e) {
+	    switch (args[0]) {
+	        case "inquiry":    
+	        	bank.inquiry(0, 0);
+	        	break;
+	        default: System.out.println("You need to provide a valid ATM action.");
+             	break;
+	    }
+    } catch(Exception e) {
 		System.out.println("Error in main - " + e.toString());
 	}
 }
