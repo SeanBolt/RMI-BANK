@@ -55,6 +55,14 @@ public class Account {
 
 	public void setAccountBalance(BigDecimal accountBalance) {
 		this.accountBalance = accountBalance;
+	}
+
+	public List<Transaction> getTransactions() {
+		return transactions;
+	}
+
+	public void setTransactions(List<Transaction> transactions) {
+		this.transactions = transactions;
 	}	
 	
 }

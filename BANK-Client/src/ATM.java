@@ -14,7 +14,7 @@ public class ATM {
 public static void main (String args[]) throws Exception {
 
 // get user input, and perform the operations
-	String name = "rmi://" + "127.0.0.1" +":"+1099+"/bank";
+	String name = "rmi://" + "127.0.0.1" +":"+1099+"/server";
 	BankInterface bank = (BankInterface) Naming.lookup(name);
 	
 	try {

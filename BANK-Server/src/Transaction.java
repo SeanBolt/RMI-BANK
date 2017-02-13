@@ -14,6 +14,12 @@ public class Transaction {
 		this.date = new Date();
 	}
 	
+	public String toString() {
+        return "Transaction: " + this.date.toString() 
+        	+ "\t" + this.description
+        	+ "\t" + this.amount;
+    }
+	
 	public Date getDate() {
 		return date;
 	}

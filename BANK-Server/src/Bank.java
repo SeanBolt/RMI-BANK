@@ -53,7 +53,7 @@ public static void main(String args[]) {
 		System.out.println("Created instance of Bank");
 		
 		//Add object to Registry
-		Naming.rebind("bank", bank);
+		Naming.rebind("server", bank);
 		System.out.println("Name rebind complete");
 		System.out.println("Server ready for requests");
 		
