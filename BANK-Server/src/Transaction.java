@@ -1,23 +1,23 @@
 import java.math.BigDecimal;
-import java.util.Calendar;
 import java.util.Date;
+
 
 public class Transaction {
 	private String description;
 	private Account account;
 	private BigDecimal amount;
 	private Date date;
-	private Calendar transactionTime;
 	
-	public Transaction(Account account, String description, Date date){
+	public Transaction(Account account, String description){
 		this.account = account;
 		this.description = description;
-		this.date = date;
+		this.date = new Date();
 	}
 	
 	public Date getDate() {
 		return date;
 	}
+	
 	public void setDate(Date date) {
 		this.date = date;
 	}
