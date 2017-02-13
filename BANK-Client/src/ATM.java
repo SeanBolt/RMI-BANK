@@ -14,7 +14,8 @@ public class ATM {
 public static void main (String args[]) throws Exception {
 
 // get user input, and perform the operations
-	BankInterface bank = (BankInterface) Naming.lookup("//localhost/Bank");
+    String name = "rmi://" + "127.0.0.1" +":"+1099+"/bank";
+	BankInterface bank = (BankInterface) Naming.lookup(name);
 	
 	try {
 		int funds = bank.inquiry(0, 0);
