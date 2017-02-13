@@ -1,50 +1,67 @@
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Transaction {
-	private String accountName;
-	private String dscrptn;
-	private Account acnt;
-	private BigDecimal amnt;
-	private Date startDate;
-	private Date endDate;
+	private String description;
+	private Account account;
+	private BigDecimal amount;
+	private Date date;
+	private Calendar transactionTime;
 	
-	public String getAccountName() {
-		return accountName;
-	}
-	public void setAccountName(String accountName) {
-		this.accountName = accountName;
-	}
-	public String getDscrptn() {
-		return dscrptn;
-	}
-	public void setDscrptn(String dscrptn) {
-		this.dscrptn = dscrptn;
-	}
-	public BigDecimal getAmnt() {
-		return amnt;
-	}
-	public void setAmnt(BigDecimal amnt) {
-		this.amnt = amnt;
-	}
-	public Date getStartDate() {
-		return startDate;
-	}
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-	public Date getEndDate() {
-		return endDate;
-	}
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
-	public Account getAcnt() {
-		return acnt;
-	}
-	public void setAcnt(Account acnt) {
-		this.acnt = acnt;
+	public Transaction(Account account, String description, Date date){
+		this.account = account;
+		this.description = description;
+		this.date = date;
 	}
 	
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public BigDecimal getAmount() {
+		return amount;
+	}
+
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Calendar getTransactionTime() {
+		return transactionTime;
+	}
+
+	public void setTransactionTime(Calendar transactionTime) {
+		this.transactionTime = transactionTime;
+	}
+	
+	public void withdraw(Account account, String description, Date date){
+		Calendar today = Calendar.getInstance();
+		today.set(Calendar.HOUR_OF_DAY, 0); // same for minutes and seconds
+		setTransactionTime(today);
+	}
+	
+	public void deposit(Account account, String description, Date date){
+		
+	}
 
 }
