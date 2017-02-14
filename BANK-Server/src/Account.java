@@ -4,13 +4,15 @@ import java.util.List;
 
 public class Account {
 	private String accountName;
+	private String password;
 	private BigDecimal accountBalance;
 	private List<Transaction> transactions;
 	private int accountNumber = ++lastAssignedNumber;
 	private static int lastAssignedNumber;
 	
-	public Account(String accountName, BigDecimal accountBalance) {
+	public Account(String accountName, String password, BigDecimal accountBalance) {
 		this.accountName = accountName;
+		this.password = password;
 		this.accountBalance = accountBalance;
 	}
 
@@ -63,6 +65,14 @@ public class Account {
 
 	public void setTransactions(List<Transaction> transactions) {
 		this.transactions = transactions;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}	
 	
 }

@@ -23,18 +23,6 @@ The default port of rmiregistry is 1099, but we may have to use other ports, if 
 You will need to define suitable classes for Account and Transaction and also provide a class that implements the Statement 
 interface.
 
-ATM Object
-
-public class ATM {
-
-public static void main (String args[]) throws Exception {
-
-// get user’s input, and perform the operations
-
-}
-
-}
-
 The command line parameters of the ATM client application will include:
 
 server_address: the address of the rmiregistry
@@ -44,6 +32,7 @@ account: the user account
 username: only for "login" operation
 password: only for "login" operation
 amount: only for “deposit” and “withdraw” operations
+
 The ATM client application can be run at the command line using the parameters shown and a full GUI based client 
 application is not required. The first operation that is called is login and if this succeeds a session ID is returned 
 which is then valid for some predefined time period. This session ID then acts as an authentication token that must be 
