@@ -17,13 +17,15 @@ public class TransactionStatement implements Statement {
 	}
 	
 	public String statementSummary() {
-		String printout = "Statement printout: \n"
+		String printout = "\nStatement printout: \n"
 				+"Start Date : " + this.startDate.toString() + "\n"
-				+"End Date : " + this.endDate.toString() + "\n\n";
+				+"End Date : " + this.endDate.toString() + "\n\n"
+				+"\t\t\t\t\tDescription\tDebit\tCredit\n";
 		for(Transaction transaction : transactions) {
 			printout += transaction.toString() + "\n";
 		}
-		System.out.println(printout);
+		
+		printout += "\nAccount Balance : " +this.account.getAccountBalance();
 		return printout;
 	}
 

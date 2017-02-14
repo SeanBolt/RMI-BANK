@@ -13,10 +13,11 @@ public class Transaction {
 		this.amount = amount;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public String toString() {
-        return "Transaction: " + this.date.toString() 
+        return "Transaction: " + this.date.toGMTString() 
         	+ "\t" + this.description
-        	+ "\t" + this.amount;
+        	+ "\t\t" + this.amount;
     }
 	
 	public Date getDate() {

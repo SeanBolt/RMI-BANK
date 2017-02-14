@@ -26,7 +26,7 @@ public class Account {
 			this.accountBalance = this.accountBalance.subtract(amount);
 		}
 		
-		Transaction transaction = new Transaction(description, amount.negate());
+		Transaction transaction = new Transaction(description, amount);
 		this.transactions.add(transaction);	
 		System.out.println("Withdrawl Successful! \nAccount Balance is now " + this.accountBalance);
 
@@ -34,12 +34,10 @@ public class Account {
 	
 	public void deposit(String description, BigDecimal amount){
 		//Increase Balance
-		System.out.println("Balance is " + this.accountBalance + "Deposit of " + amount);
 		this.accountBalance = this.accountBalance.add(amount);
 		Transaction transaction = new Transaction(description, amount);
 		this.transactions.add(transaction);	
 		System.out.println("Deposit Successful! \nAccount Balance is now " + this.accountBalance);
-		
 	}
 	
 	//	Getters & Setters

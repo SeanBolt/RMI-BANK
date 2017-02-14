@@ -7,9 +7,9 @@ public interface BankInterface extends Remote {
 
 public long login(String username, String password) throws RemoteException;
 
-public void deposit(int accountnum, int amount) throws RemoteException;
+public void deposit(int amount) throws RemoteException;
 
-public void withdraw(int accountnum, int amount) throws RemoteException;
+public void withdraw(int amount) throws RemoteException;
 
 public int inquiry(int accountnum) throws RemoteException;
 

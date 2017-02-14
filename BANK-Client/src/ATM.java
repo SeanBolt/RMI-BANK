@@ -43,10 +43,10 @@ public static void main (String args[]) throws Exception {
             case "inquiry":    System.out.println("Bank Enquirey has returned a value of " + bank.inquiry(0));
                                break;
                                
-            case "deposit":    bank.deposit(Integer.parseInt(args[3]), Integer.parseInt(args[4]));
+            case "deposit":    bank.deposit(Integer.parseInt(args[3]));
                                break;
                                
-            case "withdraw":   bank.withdraw(Integer.parseInt(args[3]), Integer.parseInt(args[4]));
+            case "withdraw":   bank.withdraw(Integer.parseInt(args[3]));
             				   break;
             				   
             case "statement":  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);

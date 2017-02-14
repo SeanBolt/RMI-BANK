@@ -18,7 +18,6 @@ private List<Account> accounts = Arrays.asList(acc1, acc2); // users accounts
 private Account accountLoggedIn;
 private SessionManager sessionManager;
 
-
 public Bank() throws RemoteException
 {
 	
@@ -55,7 +54,7 @@ public long login(String username, String password) throws RemoteException {
 }
 
 @Override
-public void deposit(int accountnum, int amount) throws RemoteException {
+public void deposit(int amount) throws RemoteException {
 	System.out.println("Account is " + this.accountLoggedIn.getAccountName());
 	System.out.println("Session manager is " + this.sessionManager.getIsValid());
 	
@@ -66,10 +65,10 @@ public void deposit(int accountnum, int amount) throws RemoteException {
 }
 
 @Override
-public void withdraw(int accountnum, int amount) throws RemoteException {
+public void withdraw(int amount) throws RemoteException {
 	if(this.isSessionValid() == true) {
 		BigDecimal decimalAmount = new BigDecimal(amount);
-		this.accountLoggedIn.withdraw("Withdrawal", decimalAmount);
+		this.accountLoggedIn.withdraw("Withdraw", decimalAmount);
 	}	
 }
 
