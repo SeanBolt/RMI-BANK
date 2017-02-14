@@ -17,7 +17,6 @@ public class Account {
 		this.accountName = accountName;
 		this.password = password;
 		this.accountBalance = accountBalance;
-		System.out.println("Account Number is "+ this.accountNumber);
 	}
 
 	public void withdraw(String description, BigDecimal amount){

@@ -25,7 +25,7 @@ public class TransactionStatement implements Statement {
 			printout += transaction.toString() + "\n";
 		}
 		
-		printout += "\nAccount Balance : " +this.account.getAccountBalance();
+		printout += "\nAccount Balance : €" +this.account.getAccountBalance();
 		return printout;
 	}
 

@@ -13,6 +13,6 @@ public void withdraw(int amount) throws RemoteException;
 
 public int inquiry(int accountnum) throws RemoteException;
 
-public Statement getStatement(Date from, Date to) throws RemoteException;
+public String getStatement(Date from, Date to) throws RemoteException;
 
 }

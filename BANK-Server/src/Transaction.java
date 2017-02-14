@@ -7,7 +7,6 @@ public class Transaction {
 	private BigDecimal amount;
 	private Date date = new Date();
 	
-//	Constructors
 	public Transaction(String description, BigDecimal amount){
 		this.description = description;
 		this.amount = amount;
@@ -17,7 +16,7 @@ public class Transaction {
 	public String toString() {
         return "Transaction: " + this.date.toGMTString() 
         	+ "\t" + this.description
-        	+ "\t\t" + this.amount;
+        	+ "\t\t€" + this.amount;
     }
 	
 	public Date getDate() {

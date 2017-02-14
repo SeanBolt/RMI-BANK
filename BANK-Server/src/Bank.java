@@ -54,10 +54,7 @@ public long login(String username, String password) throws RemoteException {
 }
 
 @Override
-public void deposit(int amount) throws RemoteException {
-	System.out.println("Account is " + this.accountLoggedIn.getAccountName());
-	System.out.println("Session manager is " + this.sessionManager.getIsValid());
-	
+public void deposit(int amount) throws RemoteException {	
 	if(this.isSessionValid()) {
 		BigDecimal decimalAmount = new BigDecimal(amount);
 		this.accountLoggedIn.deposit("Deposit", decimalAmount);
@@ -83,10 +80,11 @@ public int inquiry(int accountnum) throws RemoteException {
 }
 
 @Override
-public Statement getStatement(Date from, Date to) throws RemoteException {
+public String getStatement(Date from, Date to) throws RemoteException {
 	if(this.isSessionValid() == true) {
 		TransactionStatement statement = new TransactionStatement(accountLoggedIn, from, to);
 		System.out.println(statement.statementSummary());
+		return statement.statementSummary();
 	}
 	return null;
 }
@@ -106,17 +104,13 @@ public Boolean isSessionValid() {
 }
 
 public static void main(String args[]) {
-	try {
-		//Reset Security Manager
-//		System.setSecurityManager(new SecurityManager());
-//		System.out.println("Set Security Manager");
-		
+	try {		
 		//Create instance of local object
 		Bank bank = new Bank();
 		System.out.println("Created instance of Bank");
 		
 		//Add object to Registry
-		Naming.rebind("//localhost:7777/server", bank);
+		Naming.rebind("//localhost:"+args[0]+"/server", bank);
 		System.out.println("Name rebind complete");
 		System.out.println("Server ready for requests");
 		
