@@ -8,7 +8,6 @@ public class TransactionStatement implements Statement {
 	private Date endDate;
 	private List<Transaction> transactions;
 		
-	
 	public TransactionStatement(Account account, Date startDate, Date endDate) {
 		this.account = account;
 		this.startDate = startDate;
@@ -16,6 +15,9 @@ public class TransactionStatement implements Statement {
 		this.transactions = this.account.getTransactions();
 	}
 	
+	/*
+	 * This function creates the statement string
+	 */
 	public String statementSummary() {
 		String printout = "\nStatement printout: \n"
 				+"Start Date : " + this.startDate.toString() + "\n"

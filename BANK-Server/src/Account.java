@@ -1,7 +1,5 @@
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 public class Account {
@@ -20,23 +18,23 @@ public class Account {
 	}
 
 	public void withdraw(String description, BigDecimal amount){
-		//Reduce Balance
 		if(this.accountBalance.compareTo(amount) != -1){
 			this.accountBalance = this.accountBalance.subtract(amount);
 		}
-		
-		Transaction transaction = new Transaction(description, amount);
-		this.transactions.add(transaction);	
+		this.createTransaction(description, amount);	
 		System.out.println("Withdrawl Successful! \nAccount Balance is now " + this.accountBalance);
 
 	}
 	
 	public void deposit(String description, BigDecimal amount){
-		//Increase Balance
 		this.accountBalance = this.accountBalance.add(amount);
+		this.createTransaction(description, amount);
+		System.out.println("Deposit Successful! \nAccount Balance is now " + this.accountBalance);
+	}
+	
+	public void createTransaction(String description, BigDecimal amount) {	
 		Transaction transaction = new Transaction(description, amount);
 		this.transactions.add(transaction);	
-		System.out.println("Deposit Successful! \nAccount Balance is now " + this.accountBalance);
 	}
 	
 	//	Getters & Setters
