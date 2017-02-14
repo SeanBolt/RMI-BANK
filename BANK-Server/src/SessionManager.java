@@ -1,31 +1,36 @@
 import java.math.BigDecimal;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class SessionManager {
 
 	private Account account;
-	private int sessionlength = 60000;
-	private static Boolean isValid;
+	private int sessionlength = 500000;
+	private Boolean isValid = false;
+	private long sessionKey;
 	private Timer timer;
 	
 	public SessionManager(Account account) {
 		this.account = account;
-		this.isValid = true;
-		this.restartTimer(this.sessionlength);
+		Random random = new Random();
+		this.sessionKey = (long)(random.nextDouble()*10000000);
 	}
 	
 	
-	public void restartTimer(int sessionlength) {
+	public long restartTimer() {
 		this.isValid = true;
 		this.timer = new Timer();
 		this.timer.schedule(new TimerTask(){
 
 			@Override
 			public void run() {
-				SessionManager.isValid = false;		
+				isValid = false;
+				System.out.println("Logged out due to expired session");
 			}	
-		}, sessionlength);
+		}, this.sessionlength);
+		
+		return this.sessionKey;
 	}
 	
 	
@@ -34,4 +39,57 @@ public class SessionManager {
 		Account ac = new Account("John Doe", "123", balance);
 		SessionManager sm = new SessionManager(ac);
 	}
+
+
+	public Account getAccount() {
+		return account;
+	}
+
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+
+	public int getSessionlength() {
+		return sessionlength;
+	}
+
+
+	public void setSessionlength(int sessionlength) {
+		this.sessionlength = sessionlength;
+	}
+
+
+	public Boolean getIsValid() {
+		return this.isValid;
+	}
+
+
+	public void setIsValid(Boolean isValid) {
+		this.isValid = isValid;
+	}
+
+
+	public long getSessionKey() {
+		return sessionKey;
+	}
+
+
+	public void setSessionKey(long sessionKey) {
+		this.sessionKey = sessionKey;
+	}
+
+
+	public Timer getTimer() {
+		return timer;
+	}
+
+
+	public void setTimer(Timer timer) {
+		this.timer = timer;
+	}
+	
+	//Getters & Setters
+	
 }

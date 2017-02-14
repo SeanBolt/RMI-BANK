@@ -5,13 +5,12 @@ import java.util.Date;
 public class Transaction {
 	private String description;
 	private BigDecimal amount;
-	private Date date;
+	private Date date = new Date();
 	
 //	Constructors
 	public Transaction(String description, BigDecimal amount){
 		this.description = description;
 		this.amount = amount;
-		this.date = new Date();
 	}
 	
 	public String toString() {

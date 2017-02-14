@@ -1,4 +1,10 @@
 import java.rmi.*;
+import java.text.DateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.Locale;
 
 //The command line parameters of the ATM client application include:
 //server_address: the address of the rmiregistry
@@ -14,8 +20,7 @@ public class ATM {
 public static void main (String args[]) throws Exception {
 
 // get user input, and perform the operations
-//	String name = "rmi://" + "127.0.0.1" +":"+1099+"/server";
-
+	
 	try {
 		String hostAddress = args[0];
         String portNumber = args[1];
@@ -23,26 +28,41 @@ public static void main (String args[]) throws Exception {
         
 		String action = args[2];
         switch (action) {
-            case "login":      bank.login(args[3], args[4]);
+            case "login":      long sessionKey = bank.login(args[3], args[4]);
+            
+            				   if(sessionKey == (long) 0) {
+            					   System.out.println("Login Unsuccessful. Account Details Not found");
+            				   } else if(sessionKey == (long) 1) {
+            					   System.out.println("Login Unsuccessful. There is an account logged in already");
+            				   } else {
+            					   System.out.println("Login Successful. Session Key is " + sessionKey);
+            				   }
+            				   
                                break;
-            case "inquiry":    System.out.println("Bank Enquirey has returned a value of " + bank.inquiry(0, 0));
+                               
+            case "inquiry":    System.out.println("Bank Enquirey has returned a value of " + bank.inquiry(0));
                                break;
-            case "deposit":    Long id = new Long("1.23");
-            				   bank.deposit(Integer.parseInt(args[3]), Integer.parseInt(args[4]), id );
+                               
+            case "deposit":    bank.deposit(Integer.parseInt(args[3]), Integer.parseInt(args[4]));
                                break;
-//            case "withdraw":   bank.withdraw(args[3], args[4]);
-//                               break;
-//            case "statement":  DateFormat df = new SimpleDateFormat("dd/MM/yyyy"); // 01/10/2016
-//                               Date startDate = df.parse(args[4]);
-//                               Date endDate = df.parse(args[5]);
-//                               Statement statement = bank.getStatement(args[3], startDate, endDate);
-//                               printStatement(statement);
-//                               break;
+                               
+            case "withdraw":   bank.withdraw(Integer.parseInt(args[3]), Integer.parseInt(args[4]));
+            				   break;
+            				   
+            case "statement":  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
+            				   LocalDate start = LocalDate.parse(args[3], formatter);
+            				   LocalDate end = LocalDate.parse(args[4], formatter);
+            				   
+            				   bank.getStatement(Date.from(start.atStartOfDay(ZoneId.systemDefault()).toInstant()), 
+            						   Date.from(end.atStartOfDay(ZoneId.systemDefault()).toInstant())
+    						   );
+
             default: System.out.println("You need to provide a valid ATM action.");
                      break;
         }                     
 	} catch(Exception e) {
 		System.out.println("Error in main - " + e.toString());
+		e.printStackTrace();
 	}
 }
 }

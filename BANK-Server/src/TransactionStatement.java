@@ -21,11 +21,11 @@ public class TransactionStatement implements Statement {
 				+"Start Date : " + this.startDate.toString() + "\n"
 				+"End Date : " + this.endDate.toString() + "\n\n";
 		for(Transaction transaction : transactions) {
-			printout += transaction.toString();
+			printout += transaction.toString() + "\n";
 		}
+		System.out.println(printout);
 		return printout;
 	}
-
 
 	@Override
 	public int getAccountnum() {
